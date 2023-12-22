@@ -65,10 +65,10 @@ view: email_event {
     type: string
     sql: ${TABLE}.sent_by_id ;;
   }
-  #dimension: type {
-  #  type: string
-  #  sql: ${TABLE}.type ;;
-  #}
+  dimension: custom_type {
+    type: string
+    sql: ${TABLE}.type ;;
+  }
 
   dimension: type {
     type: string
@@ -77,6 +77,31 @@ view: email_event {
       when: {
         sql: ${TABLE}.type = "SENT" and ${TABLE}.filtered_event is null ;;
         label: "SENT"
+      }
+      when: {
+        sql: ${TABLE}.type = "DELIVERED" and ${TABLE}.filtered_event is null ;;
+        label: "DELIVERED"
+      }
+      when: {
+        sql: ${TABLE}.type = "OPEN" and ${TABLE}.filtered_event is true ;;
+        label: "OPEN"
+      }
+      when: {
+        sql: ${TABLE}.type = "CLICK" and ${TABLE}.filtered_event is true ;;
+        label: "CLICK"
+      }
+      when: {
+        sql: ${TABLE}.type = "BOUNCE" and ${TABLE}.filtered_event is null ;;
+        label: "BOUNCE"
+      }
+      when: {
+        sql: ${TABLE}.type = "DROPPED" and ${TABLE}.filtered_event is null ;;
+        label: "NOT SENT"
+      }
+      when: {
+        sql: ${TABLE}.type = "STATUSCHANGE" and ${TABLE}.filtered_event is
+         null ;;
+        label: "UNSUBSCRIBE"
       }
       }
       }
