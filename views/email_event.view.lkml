@@ -119,4 +119,10 @@ view: email_event {
     filters: [custom_type: "CLICK"]
   }
 
+  measure: Sent{
+    type: count
+    filters: [custom_type: "SENT"]
+  }
+
+
 }
