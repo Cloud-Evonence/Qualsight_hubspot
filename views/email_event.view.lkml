@@ -113,4 +113,10 @@ view: email_event {
     type: count
     drill_fields: [id, email_campaign.app_name, email_campaign.name, email_campaign.id]
   }
+
+  measure: Click{
+    type: count
+    filters: [custom_type: "CLICK"]
+  }
+
 }
