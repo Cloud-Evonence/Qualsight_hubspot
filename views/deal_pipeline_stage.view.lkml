@@ -48,6 +48,7 @@ view: deal_pipeline_stage {
     type: string
     sql: ${TABLE}.write_permissions ;;
   }
+
   measure: count {
     type: count
   }

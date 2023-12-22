@@ -120,6 +120,13 @@ explore: deal {
     sql_on: ${deal.owner_id} = ${owner.owner_id} ;;
     relationship: many_to_one
   }
+
+  join: deal_pipeline_stage {
+    type: left_outer
+    sql_on: ${deal.deal_pipeline_stage_id} = ${deal_pipeline_stage.stage_id} ;;
+    relationship: many_to_one
+  }
+
 }
 
 explore: deal_property_history {
@@ -164,7 +171,7 @@ explore: email_event {
   join: email_campaign {
     type: left_outer
     sql_on: ${email_event.email_campaign_id} = ${email_campaign.id} ;;
-    relationship: many_to_one
+    relationship: one_to_one
   }
 }
 

@@ -65,17 +65,25 @@ view: email_event {
     type: string
     sql: ${TABLE}.sent_by_id ;;
   }
+  #dimension: type {
+  #  type: string
+  #  sql: ${TABLE}.type ;;
+  #}
+
   dimension: type {
     type: string
-    sql: ${TABLE}.type ;;
-  }
+    #sql: ${TABLE}.type ;;
+    case: {
+      when: {
+        sql: ${TABLE}.type = "SENT" and ${TABLE}.filtered_event is null ;;
+        label: "SENT"
+      }
+      }
+      }
 
-  measure: total_recip_openers  {
-    type: count_distinct
-    sql: ${recipient} ;;
-    filters: [type: "OPEN"]
-    hidden: yes   # surfaced in the email event attribute view
-  }
+
+
+
   measure: count {
     type: count
     drill_fields: [id, email_campaign.app_name, email_campaign.name, email_campaign.id]
