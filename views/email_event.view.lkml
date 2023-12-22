@@ -119,6 +119,11 @@ view: email_event {
     filters: [type: "CLICK"]
   }
 
+  measure: Open {
+    type: count
+    filters: [type: "OPEN"]
+  }
+
   measure: Sent{
     type: count
     filters: [type: "SENT"]
