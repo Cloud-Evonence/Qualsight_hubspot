@@ -28,6 +28,8 @@ view: email_campaign {
     type: string
     sql: ${TABLE}.name ;;
   }
+
+
   dimension: num_included {
     type: number
     sql: ${TABLE}.num_included ;;

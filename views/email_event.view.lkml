@@ -119,6 +119,18 @@ view: email_event {
     filters: [type: "CLICK"]
   }
 
+  measure: Delivered{
+    type: count
+    filters: [type: "DELIVERED"]
+  }
+
+  measure: UNSUBSCRIBE{
+    type: count
+    filters: [type: "STATUSCHANGE"]
+  }
+
+
+
   measure: Open {
     type: count
     filters: [type: "OPEN"]
