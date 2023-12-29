@@ -26,6 +26,12 @@ explore: contact_form_submission {
     sql_on: ${contact_form_submission.contact_id} = ${contact.id} ;;
     relationship: many_to_one
   }
+
+  join: form {
+    type: left_outer
+    sql_on: ${contact_form_submission.form_id} = ${form.guid} ;;
+    relationship: many_to_one
+  }
 }
 
 explore: association_type {}
