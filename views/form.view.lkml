@@ -47,6 +47,27 @@ view: form {
     type: string
     sql: ${TABLE}.name ;;
   }
+
+  dimension: custom_name {
+    type: string
+    sql: CASE
+          WHEN LOWER(${TABLE}.name) LIKE '%ebook%' THEN 'Ebook'
+          WHEN LOWER(${TABLE}.name) LIKE '%newsletter%' THEN 'Newsletter'
+          WHEN LOWER(${TABLE}.name) LIKE '%survey%' THEN 'survey'
+          WHEN LOWER(${TABLE}.name) LIKE '%webinar%' THEN 'webinar'
+          WHEN LOWER(${TABLE}.name) LIKE '%review%' THEN 'review'
+          WHEN LOWER(${TABLE}.name) LIKE '%event%' THEN 'event'
+          WHEN LOWER(${TABLE}.name) LIKE '%thank%' THEN 'thank'
+          WHEN LOWER(${TABLE}.name) LIKE '%product launch%' THEN 'product launch'
+          WHEN LOWER(${TABLE}.name) LIKE '%automated%' THEN 'automated'
+          WHEN LOWER(${TABLE}.name) LIKE '%case study%"%' THEN 'case study%"'
+          WHEN LOWER(${TABLE}.name) LIKE '%guide%' THEN 'guide'
+          WHEN LOWER(${TABLE}.name) LIKE '%follow up%' THEN 'follow up'
+          ELSE 'Others'
+        END ;;
+    label: "EmailGroup"
+  }
+
   dimension: notify_recipients {
     type: string
     sql: ${TABLE}.notify_recipients ;;
