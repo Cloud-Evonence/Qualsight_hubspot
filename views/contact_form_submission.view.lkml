@@ -40,6 +40,19 @@ view: contact_form_submission {
     type: string
     sql: ${TABLE}.title ;;
   }
+
+
+  #measure: conversion_count {
+  #  type: count
+  #  sql: ${TABLE}.conversion_id ;;
+  #}
+
+
+
+  measure: form_count {
+    type: count
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
@@ -48,13 +61,13 @@ view: contact_form_submission {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	contact.property_first_conversion_event_name,
-	contact.id,
-	contact.property_firstname,
-	contact.property_lastname,
-	contact.property_hs_email_last_email_name,
-	contact.property_recent_conversion_event_name
-	]
+  contact.property_first_conversion_event_name,
+  contact.id,
+  contact.property_firstname,
+  contact.property_lastname,
+  contact.property_hs_email_last_email_name,
+  contact.property_recent_conversion_event_name
+  ]
   }
 
 }

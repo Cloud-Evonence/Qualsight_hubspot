@@ -424,3 +424,7 @@ explore: utm_analytics_overall_report {}
 explore: utm_analytics_weekly_report {}
 
 explore: utm_analytics_monthly_report {}
+
+explore: conversion_rate {}
+
+explore: landing_page_conversion_rate {}

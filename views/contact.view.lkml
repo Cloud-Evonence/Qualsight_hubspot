@@ -1076,6 +1076,16 @@ view: contact {
     type: string
     sql: ${TABLE}.property_zip ;;
   }
+
+  measure: total_num_visit {
+    type: count
+  }
+
+  measure: total_visits {
+    type: sum
+    sql: ${TABLE}.property_hs_analytics_num_visits ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [detail*]
@@ -1084,20 +1094,20 @@ view: contact {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	id,
-	property_first_conversion_event_name,
-	property_firstname,
-	property_lastname,
-	property_hs_email_last_email_name,
-	property_recent_conversion_event_name,
-	contact_company.count,
-	contact_form_submission.count,
-	contact_list_member.count,
-	contact_property_history.count,
-	deal_contact.count,
-	engagement_contact.count,
-	marketing_email_contact.count
-	]
+  id,
+  property_first_conversion_event_name,
+  property_firstname,
+  property_lastname,
+  property_hs_email_last_email_name,
+  property_recent_conversion_event_name,
+  contact_company.count,
+  contact_form_submission.count,
+  contact_list_member.count,
+  contact_property_history.count,
+  deal_contact.count,
+  engagement_contact.count,
+  marketing_email_contact.count
+  ]
   }
 
 }
