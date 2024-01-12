@@ -38,7 +38,12 @@ explore: association_type {}
 
 explore: company {}
 
-explore: contact {}
+explore: contact {
+  join: contact_form_submission {
+    sql_on: ${contact.id} = ${contact_form_submission.contact_id} ;;
+    relationship: many_to_one
+  }
+}
 
 explore: contact_company {
   join: company {
