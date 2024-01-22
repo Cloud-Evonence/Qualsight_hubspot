@@ -433,3 +433,5 @@ explore: utm_analytics_monthly_report {}
 explore: conversion_rate {}
 
 explore: landing_page_conversion_rate {}
+
+explore: pages {}

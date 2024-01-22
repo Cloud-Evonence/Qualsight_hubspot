@@ -41,6 +41,15 @@ view: contact_form_submission {
     sql: ${TABLE}.title ;;
   }
 
+  #dimension: google_page {
+  #  type: string
+  #  sql: CASE
+  #        WHEN LOWER(${TABLE}.title) LIKE '%google%' THEN 'google'
+  #        ELSE 'Others'
+  #      END ;;
+  #  label: "Google_page"
+  #}
+
 
   #measure: conversion_count {
   #  type: count
