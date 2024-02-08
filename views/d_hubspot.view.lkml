@@ -1,12 +1,12 @@
 
 view: d_hubspot {
   derived_table: {
-    sql: (With Event as (Select 
+    sql: (With Event as (Select
       date(created) as Date,
       email_campaign_id,
       id as Emaileventid,
       recipient,
-      Case 
+      Case
       when type = "SENT" and filtered_event is null then "SENT"
       when type = "DELIVERED" and filtered_event is null then "DELIVERED"
       when type = "OPEN" and filtered_event is true then "OPEN"
@@ -17,9 +17,9 @@ view: d_hubspot {
       End as Status,
       from `cohesive-feat-403618.hubspot.email_event`
       ),
-      
-      
-      Campaign as (Select distinct id as campaignid,name, subject, type as Campaigntype,   
+
+
+      Campaign as (Select distinct id as campaignid,name, subject, type as Campaigntype,
         case when lower(name) like "%ebook%" then "Ebook"
       when lower(name) like "%newsletter%" then "Newsletter"
       when lower(name) like "%survey%" then "Survey"
@@ -35,7 +35,7 @@ view: d_hubspot {
       Else "Others"
       end as EmailGroup
         from `cohesive-feat-403618.hubspot.email_campaign`)
-      
+
       Select A.*,B.*
       from Event A
       left join Campaign B
@@ -45,6 +45,11 @@ view: d_hubspot {
   measure: count {
     type: count
     drill_fields: [detail*]
+  }
+
+  measure: UNSUBSCRIBE{
+    type: count
+    filters: [status: "STATUSCHANGE"]
   }
 
   dimension: date {
@@ -101,15 +106,15 @@ view: d_hubspot {
   set: detail {
     fields: [
         date,
-	email_campaign_id,
-	emaileventid,
-	recipient,
-	status,
-	campaignid,
-	name,
-	subject,
-	campaigntype,
-	email_group
+  email_campaign_id,
+  emaileventid,
+  recipient,
+  status,
+  campaignid,
+  name,
+  subject,
+  campaigntype,
+  email_group
     ]
   }
 }

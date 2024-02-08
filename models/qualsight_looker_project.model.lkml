@@ -437,3 +437,4 @@ explore: landing_page_conversion_rate {}
 explore: pages {}
 
 explore: d_hubspot {}
+explore: conversion {}

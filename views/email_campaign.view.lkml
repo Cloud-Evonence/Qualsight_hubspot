@@ -28,6 +28,19 @@ view: email_campaign {
     type: string
     sql: ${TABLE}.name ;;
   }
+
+  dimension: names {
+    type: string
+    sql: CASE WHEN ${TABLE}.name NOT LIKE '%Thank%' AND ${TABLE}.name NOT LIKE '%Automated%' THEN ${TABLE}.name ELSE NULL END ;;
+  }
+
+
+
+
+
+
+
+
   #dimension: custom_name {
   #  type: string
   #  sql: CASE WHEN ${TABLE}.name LIKE '%ebook%' THEN 'Ebook' ELSE 'Others' END ;;

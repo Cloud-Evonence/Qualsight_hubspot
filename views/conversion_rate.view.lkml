@@ -1,13 +1,13 @@
 
 view: conversion_rate {
   derived_table: {
-    sql: SELECT ct.property_hs_marketable_status as ststus, con.page_url  AS contact_form_submission_page_url, COUNT(con.conversion_id)/SUM(ct.property_hs_analytics_num_visits)* 100 as conversion_rate,
+    sql: SELECT ct.property_hs_marketable_status as status, con.title, con.page_url  AS contact_form_submission_page_url, COUNT(con.conversion_id)/SUM(ct.property_hs_analytics_num_visits)* 100 as conversion_rate,
       COUNT(con.conversion_id) as count_con_id,
       SUM(ct.property_hs_analytics_num_visits) as sum_visits
        from hubspot.contact_form_submission con
       LEFT JOIN hubspot.contact ct
       on  con.contact_id = ct.id
-      group by con.page_url, ct.property_hs_marketable_status
+      group by con.page_url, ct.property_hs_marketable_status, con.title
       order by conversion_rate desc ;;
   }
 
@@ -37,6 +37,11 @@ view: conversion_rate {
     sql: ${TABLE}.count_con_id ;;
   }
 
+  dimension: title {
+    type: string
+    sql: ${TABLE}.title ;;
+  }
+
   dimension: sum_visits {
     type: number
     sql: ${TABLE}.sum_visits ;;
@@ -48,6 +53,7 @@ view: conversion_rate {
   conversion_rate,
   count_con_id,
   sum_visits,
+  title,
   property_hs_marketable_status
     ]
   }
