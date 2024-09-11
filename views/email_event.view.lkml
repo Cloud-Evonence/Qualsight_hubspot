@@ -65,12 +65,12 @@ view: email_event {
     type: string
     sql: ${TABLE}.sent_by_id ;;
   }
-  dimension: custom_type {
+  dimension: type {
     type: string
     sql: ${TABLE}.type ;;
   }
 
-  dimension: type {
+  dimension: type1 {
     type: string
     #sql: ${TABLE}.type ;;
     case: {

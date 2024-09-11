@@ -1,4 +1,5 @@
 view: company {
+  required_access_grants: [can_view_data,can_view_all_data]
   sql_table_name: `hubspot.company` ;;
   drill_fields: [property_company_id_c]
 
@@ -506,15 +507,15 @@ view: company {
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
-	property_company_id_c,
-	property_first_conversion_event_name,
-	property_name,
-	property_recent_conversion_event_name,
-	contact_company.count,
-	company_property_history.count,
-	deal_company.count,
-	engagement_company.count
-	]
+  property_company_id_c,
+  property_first_conversion_event_name,
+  property_name,
+  property_recent_conversion_event_name,
+  contact_company.count,
+  company_property_history.count,
+  deal_company.count,
+  engagement_company.count
+  ]
   }
 
 }

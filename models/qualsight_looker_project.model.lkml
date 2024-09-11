@@ -10,6 +10,23 @@ datagroup: testing_default_datagroup {
 
 persist_with: testing_default_datagroup
 
+# access_grant: can_view_data {
+#   user_attribute: hubspot_access
+#   allowed_values: [ "company, contact" ]
+# }
+access_grant: can_view_data {
+  user_attribute: hubspot_access
+  allowed_values: [ "Y" ]
+}
+
+
+access_grant: can_view_all_data {
+  user_attribute: hub_access
+  allowed_values: [ "X" ]
+}
+
+
+
 explore: contact_list {}
 
 explore: company_property_history {
@@ -33,6 +50,8 @@ explore: contact_form_submission {
     relationship: many_to_one
   }
 }
+
+
 
 explore: association_type {}
 
