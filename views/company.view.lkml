@@ -1,5 +1,5 @@
 view: company {
-  required_access_grants: [can_view_data]
+  required_access_grants: [can_view_all_data]
   sql_table_name: `hubspot.company` ;;
   drill_fields: [property_company_id_c]
 
